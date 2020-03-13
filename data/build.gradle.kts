@@ -1,3 +1,5 @@
+import Modules.implementDomain
+
 plugins {
     id("com.android.library")
     kotlin("android")
@@ -5,11 +7,11 @@ plugins {
 }
 
 android {
-    compileSdkVersion(AndroidSdk.androidCompileSdkVersion)
-    buildToolsVersion(AndroidSdk.androidBuildToolsVersion)
+    compileSdkVersion(AndroidSdk.compileSdkVersion)
+    buildToolsVersion(AndroidSdk.buildToolsVersion)
     defaultConfig {
-        minSdkVersion(AndroidSdk.androidMinSdkVersion)
-        targetSdkVersion(AndroidSdk.androidTargetSdkVersion)
+        minSdkVersion(AndroidSdk.minSdkVersion)
+        targetSdkVersion(AndroidSdk.targetSdkVersion)
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -35,7 +37,7 @@ android {
 }
 
 dependencies {
-    api(project(":domain"))
+    implementDomain()
 
     implementation(Libraries.coroutinesAndroid)
 

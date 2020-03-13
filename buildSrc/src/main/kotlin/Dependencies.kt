@@ -34,10 +34,10 @@ object BuildPlugins {
 
 object AndroidSdk {
 
-    const val androidBuildToolsVersion = "29.0.2"
-    const val androidMinSdkVersion = 23
-    const val androidTargetSdkVersion = 29
-    const val androidCompileSdkVersion = 29
+    const val buildToolsVersion = "29.0.2"
+    const val minSdkVersion = 23
+    const val targetSdkVersion = 29
+    const val compileSdkVersion = 29
 }
 
 object Libraries {

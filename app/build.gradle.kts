@@ -1,19 +1,23 @@
+import Modules.implementData
+import Modules.implementDevice
+import Modules.implementDomain
+
 plugins {
     id("com.android.application")
     kotlin("android")
     kotlin("android.extensions")
-    id("kotlin-kapt")
+    kotlin("kapt")
 }
 
 android {
-    compileSdkVersion(AndroidSdk.androidCompileSdkVersion)
-    buildToolsVersion(AndroidSdk.androidBuildToolsVersion)
+    compileSdkVersion(AndroidSdk.compileSdkVersion)
+    buildToolsVersion(AndroidSdk.buildToolsVersion)
     defaultConfig {
         applicationId = "com.example.template"
-        minSdkVersion(AndroidSdk.androidMinSdkVersion)
-        targetSdkVersion(AndroidSdk.androidTargetSdkVersion)
-        versionCode = 1
-        versionName = "1.0"
+        minSdkVersion(AndroidSdk.minSdkVersion)
+        targetSdkVersion(AndroidSdk.targetSdkVersion)
+        versionCode = Versioning.version.code
+        versionName = Versioning.version.name
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -24,7 +28,15 @@ android {
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+        getByName("debug") {
+            applicationIdSuffix = ".debug"
+            versionNameSuffix = "-debug"
+            isTestCoverageEnabled = true
         }
     }
 
@@ -39,9 +51,8 @@ android {
 }
 
 dependencies {
-    implementation(project(":domain"))
-    implementation(project(":data"))
-    implementation(project(":device"))
+    implementData()
+    implementDevice()
 
     implementation(Libraries.coroutinesAndroid)
 
@@ -63,6 +74,6 @@ dependencies {
 
     testImplementation(TestLibraries.junit4)
     androidTestImplementation(TestLibraries.junitAndroid)
-    androidTestImplementation (TestLibraries.testRunner)
+    androidTestImplementation(TestLibraries.testRunner)
     androidTestImplementation(TestLibraries.espresso)
 }
