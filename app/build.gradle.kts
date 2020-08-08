@@ -1,6 +1,5 @@
 import Modules.implementData
 import Modules.implementDevice
-import Modules.implementDomain
 
 plugins {
     id("com.android.application")
@@ -47,6 +46,10 @@ android {
 
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+
+    sourceSets {
+        getByName("main").java.srcDir("src/main/kotlin")
     }
 }
 
