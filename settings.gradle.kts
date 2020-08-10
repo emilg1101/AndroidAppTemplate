@@ -3,7 +3,4 @@ import Modules.Data
 import Modules.Device
 import Modules.Domain
 
-include(App)
-include(Domain)
-include(Data)
-include(Device)
+listOf(App, Data, Device, Domain).forEach { module -> include(module) }

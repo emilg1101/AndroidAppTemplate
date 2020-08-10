@@ -27,10 +27,12 @@ object BuildPlugins {
 
     object Versions {
         const val buildToolsVersion = "3.6.0"
+        const val detektVersion = "1.11.0-RC2"
     }
 
-    const val androidGradlePlugin = "com.android.tools.build:gradle:${buildToolsVersion}"
+    const val androidGradlePlugin = "com.android.tools.build:gradle:$buildToolsVersion"
     const val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+    const val detektGradlePlugin = "io.gitlab.arturbosch.detekt"
 }
 
 object AndroidSdk {

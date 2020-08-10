@@ -73,7 +73,7 @@ dependencies {
 
     implementation(Libraries.Glide.glide)
 
-    annotationProcessor(Libraries.Glide.compiler)
+    kapt(Libraries.Glide.compiler)
 
     testImplementation(TestLibraries.junit4)
     androidTestImplementation(TestLibraries.junitAndroid)

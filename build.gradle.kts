@@ -1,9 +1,13 @@
+plugins {
+    id(BuildPlugins.detektGradlePlugin) version BuildPlugins.Versions.detektVersion
+}
+
 buildscript {
 
     repositories {
         google()
         jcenter()
-
+        mavenCentral()
     }
     dependencies {
         classpath(BuildPlugins.androidGradlePlugin)
@@ -12,10 +16,22 @@ buildscript {
 }
 
 allprojects {
+    apply {
+        plugin(BuildPlugins.detektGradlePlugin)
+    }
     repositories {
         google()
         jcenter()
-
+        mavenCentral()
+    }
+    detekt {
+        config = rootProject.files("config/detekt/detekt.yml")
+        reports {
+            html {
+                enabled = true
+                destination = file("build/reports/detekt.html")
+            }
+        }
     }
 }
 
